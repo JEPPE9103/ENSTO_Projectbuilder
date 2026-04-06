@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+body {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* Desktop-only app scale to mimic browser zoom ~80% while browser stays at 100%. */
+@media (min-width: 1280px) {
+  .desktop-app-scale {
+    zoom: 0.8;
+    min-height: calc(100vh / 0.8);
+  }
+}
+
+/* Elevated surfaces for depth (page bg stays #F8FAFC) */
+@utility shadow-surface {
+  box-shadow:
+    0 1px 2px rgb(15 23 42 / 0.035),
+    0 3px 10px -3px rgb(15 23 42 / 0.06);
+}
+@utility shadow-surface-hover {
+  box-shadow:
+    0 2px 3px rgb(15 23 42 / 0.035),
+    0 8px 20px -6px rgb(15 23 42 / 0.08);
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: #0f172a !important;
+  }
+
+  header,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+
+  main {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .print-page {
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 12mm !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+
+  .print-page * {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Printable quote table should never scroll in PDF */
+  .print-page .quote-table-container {
+    overflow: visible !important;
+  }
+
+  .print-page table.quote-table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    font-size: 10px !important;
+  }
+
+  .print-page table.quote-table th,
+  .print-page table.quote-table td {
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    vertical-align: top;
+  }
+
+  /* Column widths: keep compact numeric columns; product gets remaining space */
+  .print-page table.quote-table th:nth-child(1),
+  .print-page table.quote-table td:nth-child(1) {
+    width: 30% !important;
+  }
+  .print-page table.quote-table th:nth-child(2),
+  .print-page table.quote-table td:nth-child(2) {
+    width: 12% !important;
+  }
+  .print-page table.quote-table th:nth-child(3),
+  .print-page table.quote-table td:nth-child(3) {
+    width: 10% !important;
+  }
+  .print-page table.quote-table th:nth-child(4),
+  .print-page table.quote-table td:nth-child(4) {
+    width: 6% !important;
+  }
+  .print-page table.quote-table th:nth-child(5),
+  .print-page table.quote-table td:nth-child(5),
+  .print-page table.quote-table th:nth-child(6),
+  .print-page table.quote-table td:nth-child(6),
+  .print-page table.quote-table th:nth-child(7),
+  .print-page table.quote-table td:nth-child(7),
+  .print-page table.quote-table th:nth-child(8),
+  .print-page table.quote-table td:nth-child(8) {
+    width: 10.5% !important;
+  }
+}
